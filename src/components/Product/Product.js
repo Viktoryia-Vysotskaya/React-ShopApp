@@ -15,6 +15,18 @@ const Product = ({ name, title, basePrice, colors, sizes }) => {
     const addPrice = sizes.find(element => element.name === currentSize).additionalPrice
     return basePrice + addPrice
   };
+  const addToCart = e => {
+    e.preventDefault();
+    const cartSummary = `
+      Summary
+      =============
+      Name: ${ title }
+      Price: ${ getPrice() }
+      Size: ${ currentSize }
+      Color: ${ currentColor }
+    `;
+    console.log(cartSummary);
+  };
   return (
     <article className={styles.product}>
       <div className={styles.imageContainer}>
@@ -28,7 +40,7 @@ const Product = ({ name, title, basePrice, colors, sizes }) => {
           <h2 className={styles.name}>{title}</h2>
           <span className={styles.price}>{getPrice()}$</span>
         </header>
-        <form>
+        <form onSubmit={ addToCart }>
           <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
