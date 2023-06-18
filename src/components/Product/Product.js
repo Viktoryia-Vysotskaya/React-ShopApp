@@ -1,6 +1,6 @@
 import styles from './Product.module.scss';
 import PropTypes from 'prop-types';
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ProductImage from './ProductImage/ProductImage';
 import ProductForm from '../ProductForm/ProductForm';
 
@@ -10,17 +10,17 @@ const Product = ({ name, title, basePrice, colors, sizes }) => {
   const prepareColorClassName = color => {
     return styles['color' + color[0].toUpperCase() + color.substr(1).toLowerCase()];
   }
-  const getPrice = () => {
-    const addPrice = sizes.find(element => element.name === currentSize).additionalPrice
-    return basePrice + addPrice
-  };
+  const getPrice = useMemo(() => {
+    const addPrice = sizes.find(element => element.name === currentSize).additionalPrice;
+    return basePrice + addPrice;
+  }, [currentSize, sizes, basePrice]);
   const addToCart = e => {
     e.preventDefault();
     const cartSummary = `
       Summary
       =============
       Name: ${title}
-      Price: ${getPrice()}
+      Price: ${getPrice}
       Size: ${currentSize}
       Color: ${currentColor}
     `;
@@ -32,7 +32,7 @@ const Product = ({ name, title, basePrice, colors, sizes }) => {
       <div>
         <header>
           <h2 className={styles.name}>{title}</h2>
-          <span className={styles.price}>{getPrice()}$</span>
+          <span className={styles.price}>{getPrice}$</span>
         </header>
         <ProductForm addToCart={addToCart} sizes={sizes}
           currentSize={currentSize} setCurrentSize={setCurrentSize}
