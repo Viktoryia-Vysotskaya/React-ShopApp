@@ -7,10 +7,17 @@ const OptionSize = ({ sizes, currentSize, setCurrentSize }) => {
         <div className={styles.sizes}>
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
-                {sizes.map(size =>
-                    <li key={size.id}>
-                        <Button type="button" className={currentSize === size.name ? styles.active : undefined} onClick={() => setCurrentSize(size.name)}>{size.name}</Button>
-                    </li>)}
+                {sizes.map((size, index) =>
+                    <li key={`size_${index}`}>
+                        <Button
+                            type="button"
+                            className={currentSize === size.name ? styles.active : undefined}
+                            onClick={() => setCurrentSize(size.name)}
+                        >
+                            {size.name}
+                        </Button>
+                    </li>
+                )}
             </ul>
         </div>
     );
