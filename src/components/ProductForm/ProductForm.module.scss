@@ -19,7 +19,7 @@
         border-radius: math.div($radius, 2);
         padding: $base-size;
         margin: math.div($base-size, 2.5) $base-size;
-        background: rgba(47, 53, 66, 0.5);
+        background: $color-dark;
         min-width: $base-size * 3;
         min-height: $base-size * 3;
         text-align: center;
@@ -29,27 +29,27 @@
         &.active {
             opacity: 1;
             transform: scale(1.2);
-            background: rgb(47, 53, 66);
+            background: $color-dark;
         }
 
         &.colorBlack {
-            background: #000;
+            background: $color-one;
         }
 
         &.colorRed {
-            background: #e74c3c;
+            background: $color-warning;
         }
 
         &.colorWhite {
-            background: #fff;
+            background: $color-light;
         }
 
         &.colorBlue {
-            background: #3498db;
+            background: $color-two;
         }
 
         &.colorGreen {
-            background: #2ecc71;
+            background: $color-success;
         }
 
         &:first-child {
@@ -60,7 +60,7 @@
 }
 
 .sizes .choices button:hover {
-    background: rgb(47, 53, 66);
+    background: $color-dark;
 }
 
 .button {

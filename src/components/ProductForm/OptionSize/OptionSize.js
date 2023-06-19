@@ -1,6 +1,6 @@
 import styles from '../ProductForm.module.scss';
 import PropTypes from 'prop-types';
-import shortid from 'shortid';
+import Button from '../Button/Button';
 
 const OptionSize = ({ sizes, currentSize, setCurrentSize }) => {
     return (
@@ -8,8 +8,8 @@ const OptionSize = ({ sizes, currentSize, setCurrentSize }) => {
             <h3 className={styles.optionLabel}>Sizes</h3>
             <ul className={styles.choices}>
                 {sizes.map(size =>
-                    <li key={shortid()}>
-                        <button type="button" className={currentSize === size.name ? styles.active : undefined} onClick={() => setCurrentSize(size.name)}>{size.name}</button>
+                    <li key={size.id}>
+                        <Button type="button" className={currentSize === size.name ? styles.active : undefined} onClick={() => setCurrentSize(size.name)}>{size.name}</Button>
                     </li>)}
             </ul>
         </div>
